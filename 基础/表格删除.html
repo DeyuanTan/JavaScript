@@ -1,0 +1,82 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		window.onload=function(){
+			var oTab=document.getElementById('tab1');
+			var oBtn=document.getElementById('btn1');
+			var oTxt=document.getElementById('text1');
+
+			oBtn.onclick=function(){
+				var oTr=document.createElement('tr');
+				var oTd=null;
+
+				oTd=document.createElement('td');
+				oTd.innerHTML=oTab.tBodies[0].rows.length+1;
+				oTr.appendChild(oTd);
+
+				oTd=document.createElement('td');
+				oTd.innerHTML=oTxt.value;
+				oTr.appendChild(oTd);
+
+				oTd=document.createElement('td');
+				oTd.innerHTML='<a href="javascript:;">删除</a>';
+				oTr.appendChild(oTd);
+
+				oTd.getElementsByTagName('a')[0].onclick=function(){
+					oTab.tBodies[0].removeChild(this.parentNode.parentNode);
+				}
+
+				oTab.tBodies[0].appendChild(oTr);
+
+			};
+		}
+	</script>
+</head>
+<body>
+	<input id='text1' type="text" />
+	<input id='btn1' type="button" value="添加" />
+	<table id="tab1" border="1" width="400"> 
+		<thead>
+			<td>ID</td>
+			<td>姓名</td>
+			<td>操作</td>
+		</thead>
+		<tbody>
+			<tr>
+				<td>1</td>
+				<td>Blue</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>Leo</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td>默默</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>4</td>
+				<td>aaa</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>5</td>
+				<td>bbb</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>6</td>
+				<td>ccc</td>
+				<td></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

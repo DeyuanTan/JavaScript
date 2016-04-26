@@ -1,0 +1,10 @@
+*{margin: 0;padding: 0;}
+div#container{width:504px;margin: 0 auto;border: 1px solid red;}
+div#header{background-color: #9bb;border: 1px solid blue;text-align: center;}
+div#Menu{background-color: yellow;height:200px;width:150px;float:left;border: 1px solid green;}
+div#content{background-color: whrite;height:200px;width:350px;float:right;border: 1px solid black;}
+div#footer{background-color: #9bb;clear: both;text-align: center;}
+h1{margin-bottom: 0;}
+h2{margin-bottom: 0;}
+ul{margin: 0;}
+li{list-style: none;}

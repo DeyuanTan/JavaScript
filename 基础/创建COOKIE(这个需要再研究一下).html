@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		function setCookie(name,value,iDay){
+			var oDate=new Date();
+			oDate.setDate(oDate.getDate()+iDay);
+			document.cookie=name+'='+value+';expires='+oDate;
+		};
+		function getCookie(name){
+			var arr=document.cookie.splie(';');
+			var i=0;
+			//arr-->['username=abc','password=12345']
+			for(i=0;i<arr.length;i++){
+				//arr[2]-->['username','abc']
+				var arr2=arr[i].split('=');
+				if(arr[2]==name){
+					return arr[1];
+				};
+			};
+			return '';
+		};
+		function removeCookie(name){
+			setCookie(name,'1',-1)
+		}
+		alert(getCookie('username'));
+		removeCookie('username');
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

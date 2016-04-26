@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<style type="text/css">
+		#div1{width:100px;height:100px;background-color: red;position: absolute;}
+	</style>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		window.onload=function(){
+			var oDiv=document.getElementById('div1');
+			oDiv.onmousedown=function(ev){
+				var oEvent=ev||event;
+				var disX=oEvent.clientX-oDiv.offsetLeft;
+				var disY=oEvent.clientY-oDiv.offsetTop;
+				document.onmousemove=function(ev){
+					var oEvent=ev||event;
+					var l=oEvent.clientX-disX;
+					var t=oEvent.clientY-disY;
+					if(l<0){
+						l=0;
+					}else if(l>document.documentElement.clientWidth-oEvent.offsetWidth){
+						l=document.documentElement.clientWidth-oEvent.offsetWidth;
+					};
+					if(t<0){
+						t=0;
+					}else if(t>document.documentElement.clientHeight-oEvent.offsetHeight){
+						t=document.documentElement.clientHeight-oEvent.offsetHeight;
+					};
+					oDiv.style.left=l+'px';
+					oDiv.style.top=t+'px';
+				};
+				oDiv.onmouseup=function(){
+					document.onmousemove=null;
+					oDiv.onmouseup=null;
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<div id="div1"></div>
+</body>
+</html>
