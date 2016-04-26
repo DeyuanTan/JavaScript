@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<style type="text/css">
+	#div1{width: 100px;height: 100px;background-color: red;position: absolute;top:50px;left: 0;}
+	</style>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		//减速运动
+		/*var iSpeed=30;
+		function startMove(){
+			var oDiv1=document.getElementById('div1');
+			oDiv1.timer=setInterval(function(){
+				iSpeed--;
+				oDiv1.style.left=oDiv1.offsetLeft+iSpeed+'px';
+				if(iSpeed<=0){
+					clearInterval(oDiv1.timer)
+				};
+			},30);
+		};*/
+		// 加速运动
+		var iSpeed=0;
+		function startMove(){
+			var oDiv1=document.getElementById('div1');	
+			oDiv1.timer=setInterval(function(){
+				iSpeed++;
+				oDiv1.style.left=oDiv1.offsetLeft+iSpeed+'px';
+				if(iSpeed>=30){
+					clearInterval(oDiv1.timer)
+				};
+			},30);
+		}
+	</script>
+</head>
+<body>
+	<input type="button" value="开始运动" onclick="startMove()">
+	<div id="div1"></div>
+</body>
+</html>

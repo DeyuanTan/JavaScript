@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<style type="text/css">
+		#div1{height: 100px;width: 100px;background-color: red;position: absolute;top:50px;left: 0;}
+	</style>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		var timer=null;
+		function startMove(iTarget){
+			var oDiv=document.getElementById('div1');
+			clearInterval(timer);  //每次点击都关闭前一个点击打开的定时器
+			timer=setInterval(function(){
+				var iSpeed=(iTarget-oDiv.offsetLeft)/8;
+				if(oDiv.offsetLeft>=iTarget){
+					clearInterval(timer);
+				}else{
+					oDiv.style.left=oDiv.offsetLeft+iSpeed+'px';
+				};
+			} ,30);
+		}
+	</script>
+</head>
+<body>
+	<input type="button" value="开始移动" onclick="startMove(300)" >
+	<div id="div1"></div>
+</body>
+</html>

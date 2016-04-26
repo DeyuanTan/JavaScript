@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<style type="text/css">
+		#div1{width: 100px;height: 50px;background-color: red;}
+	</style>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		window.onload=function(){
+			var oDiv=document.getElementById('div1');
+			oDiv.onmouseover=function(){
+				startMove(300);
+			};
+			oDiv.onmouseout=function(){
+				startMove(100);
+			}
+		}
+		var timer=null;
+		function startMove(iTarget){
+			var oDiv=document.getElementById('div1');
+			clearInterval(timer);
+			timer=setInterval(function(){
+				var iSpeed=(iTarget-oDiv.offsetWidth)/8;
+				iSpeed=iSpeed>0?Math.ceil(iSpeed):Math.floor(iSpeed);
+				if(oDiv.offsetWidth==iTarget){
+					clearInterval(timer);
+				}else{
+					oDiv.style.width=oDiv.offsetWidth+iSpeed+'px';
+				};
+			} ,30)
+		}
+	</script>
+</head>
+<body>
+	<div id="div1"></div>
+</body>
+</html>

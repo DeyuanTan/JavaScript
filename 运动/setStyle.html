@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<style type="text/css">
+		#div1{width: 100px;height: 100px;background-color: red;}
+	</style>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		function setStyle(obj,json){
+			obj.style[attr]=value;
+		};
+
+		window.onload=function(){
+			var oDiv=document.getElementById('div1');
+			oDiv.onclick=function(){
+				setStyle(oDiv,{width:'200px',height:'200px',background:'green'});
+			}
+		};
+	</script>
+</head>
+<body>
+	<div id="div1"></div>
+</body>
+</html>
