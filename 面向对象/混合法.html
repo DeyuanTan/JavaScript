@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		function CreatePerson(name,sex){
+			//添加属性，每个对象都各不相同
+			this.name=name;
+			this.sex=sex;
+		}
+		//添加方法
+		CreatePerson.prototype.showName=function(){
+			alert(this.name);
+		};
+		CreatePerson.prototype.showSex=function(){
+			alert(this.sex);
+		};
+		var p1=new CreatePerson('blue','男');
+		var p2=new CreatePerson('leo','男');
+		p1.showName();
+		p1.showSex();
+		p2.showName();
+		p2.showSex();
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
