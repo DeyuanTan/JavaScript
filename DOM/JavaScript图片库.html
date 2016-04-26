@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="layout.css">
+	<script type="text/javascript">
+		function showPic(whichpic){
+			var source=whichpic.getAttribute('href');
+			var zhanWeiFu=document.getElementById('zhanweifu'); //获得占位符图片
+			var text=whichpic.getAttribute('title');
+			var description=document.getElementById('description');
+			zhanweifu.setAttribute('src',source);
+			description.firstChild.nodeValue=text;
+		};
+
+	</script>
+</head>
+<body>
+	<h1>图片替换</h1>
+	<ul>
+		<li>
+			<a href="http://g.hiphotos.baidu.com/zhidao/pic/item/9f510fb30f2442a79fbc68ded343ad4bd113021e.jpg" onclick="showPic(this);return false;" title="A Fire man">Firework</a>
+		</li>
+		<li>
+			<a href="http://attach.bbs.miui.com/forum/201402/21/120043wsfuzzuefyasz3fe.jpg" title="A cup of coffee" onclick="showPic(this);return false;">Coffee</a>
+		</li>
+		<li>
+			<a href="http://h.hiphotos.baidu.com/zhidao/pic/item/6a63f6246b600c3320b14bb3184c510fd8f9a185.jpg" title="A red rose" onclick="showPic(this);return false;">ROSE</a>
+		</li>
+		<li>
+			<a href="http://pic2.nipic.com/20090506/1055421_080356081_2.jpg" title="A strong man" onclick="showPic(this);return false;">NIDAGE</a>
+		</li>
+	</ul>
+	<img src="http://imgsrc.baidu.com/forum/pic/item/9f510fb30f2442a72c033b31d143ad4bd1130211.jpg" id="zhanweifu" alt="my image">
+	<p id="description">Choose an image.</p>
+</body>
+</html>

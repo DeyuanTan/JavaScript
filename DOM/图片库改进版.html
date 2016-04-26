@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="layout.css">
+	<script type="text/javascript">
+		/*window.onload=function prepareLinks(){
+			if(!document.getElementsByTagName) return false; //对象检测
+			var links=document.getElementsByTagName('a');
+			for(var i = 0;i<links.length;i++){
+				if(links[i].getAttribute('class')=='popup'){
+					links[i].onclick=function(){
+						popUp(this.getAttribute('href'));
+						return false;
+					};
+				};
+			};
+		};
+			function popUp(winURL){
+			window.open(winURL,'popup','width=320,height=480');
+		};*/
+
+		window.onload=function prepareGallery(){
+			//检查和测试
+			if(!document.getElementsByTagName){
+				return false;
+			} ;
+			if(!document.getElementsById){
+				return false;
+			};
+			if(!document.getElementById('imagegallery')){
+				return false;
+			};
+
+			var gallery=document.getElementById('imagegallery');
+			var links=gallery.getElementByTagName('a');
+			var i = 0;
+			for(i = 0;i<links.length;i++){
+				links[i].onclick=function(){
+			        return showPic(this)?false:true;
+					//等价于：
+					/*if(showPic(this)){
+						return false;
+					}else{
+						return true;
+					};*/
+				};
+				//键盘访问：onkeypress  最好不使用
+				//links[i].onkeypress=links[i].onclick;
+			};
+		};
+
+		/*function showPic(whichpic){
+
+			var source=whichpic.getAttribute('href');
+			//获得占位符图片
+			if(!document.getElementById('placeholder')) return false;
+			var placeholder=document.getElementById('placeholder'); 
+			placeholder.setAttribute('src',source);
+			if(document.getElementById('description')){
+				var text=whichpic.getAttribute('title');
+				var description=document.getElementById('description');
+				description.firstChild.nodeValue=text;
+			}
+				return true;
+		};*/
+
+        //优化：检测title是否存在
+       // var text=whichpic.getAttribute('title')?whichpic.getAttribute:"";
+        	//等价于：
+        /*if(whichpic.getAttribute('title')){
+        	var text=whichpic.getAttribute('title');
+        }else{
+        	var text="";
+        };*/
+        //检测placeholder是否存在，先检测是否图片
+       // if(placeholder.nodeName != 'IMG') return false;
+        //注意：nodeName总是返回一个大写字母的值
+
+        //检测desctiption第一个子元素是否为文本
+       /* if(description.firstChild.nodeType==3){
+        	description.firstChild.nodeValue = text;
+        }*/
+
+        //综上，改进后的代码为:
+       function showPic(whichpic){
+        	if(placeholder.nodeName != 'IMG') return false;
+			var source=whichpic.getAttribute('href');
+			//获得占位符图片
+			if(!document.getElementById('placeholder')) return false;
+			var placeholder=document.getElementById('placeholder'); 
+			placeholder.setAttribute('src',source);
+			if(document.getElementById('description')){
+				var text=whichpic.getAttribute('title')?whichpic.getAttribute:"";
+				var description=document.getElementById('description');
+				if(description.firstChild.nodeType==3){
+        			description.firstChild.nodeValue = text;
+        		}
+			}
+				return true;
+		};
+		
+	</script>
+</head>
+<body>
+	<h1>图片替换</h1>
+	<ul id='imagegallery'>
+		<li>
+			<a href="http://g.hiphotos.baidu.com/zhidao/pic/item/9f510fb30f2442a79fbc68ded343ad4bd113021e.jpg"  title="A Fire man" target="_self">Fire</a> 
+		</li>
+		<li>
+			<a href="http://attach.bbs.miui.com/forum/201402/21/120043wsfuzzuefyasz3fe.jpg" title="A cup of coffee" >Coffee</a>
+		</li>
+		<li>
+			<a href="http://h.hiphotos.baidu.com/zhidao/pic/item/6a63f6246b600c3320b14bb3184c510fd8f9a185.jpg" title="A red rose" >Rose</a>
+		</li>
+		<li>
+			<a href="http://pic2.nipic.com/20090506/1055421_080356081_2.jpg" title="A strong man" >Strong</a>
+		</li>
+	</ul>
+	<img src="http://imgsrc.baidu.com/forum/pic/item/9f510fb30f2442a72c033b31d143ad4bd1130211.jpg" id="placeholder" alt="my image">
+	<p id="description">Choose an image.</p>
+</body>
+</html>

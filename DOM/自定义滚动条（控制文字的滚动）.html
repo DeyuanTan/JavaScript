@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<style type="text/css">
+		#parent{width: 400px;height: 20px;background-color: #ccc;position: relative;margin: 20px auto;}
+		#div1{width: 20px;height: 20px;background-color: red;cursor: pointer;position: absolute;}
+		#div2{width: 200px;height: 300px;border: 1px solid black;background-color: yellow;position: relative;overflow: hidden;}
+		#div3{position: absolute;}
+	</style>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		window.onload=function(){
+			var oDiv=document.getElementById('div1');
+			var oParent=document.getElementById('parent');
+			var oDiv2=document.getElementById('div2');
+			var oDiv3=document.getElementById('div3');
+
+			oDiv.onmousedown=function(ev){
+				var oEvent=ev||event;
+				var disX=oEvent.clientX-oDiv.offsetLeft;
+				
+				document.onmousemove=function(ev){
+					var oEvent=ev||event;
+					var l=oEvent.clientX-disX;
+					if(l<0){
+						l=0;
+					}else if(l>oParent.offsetWidth-oDiv.offsetWidth){
+						l=oParent.offsetWidth-oDiv.offsetWidth;
+					}
+					oDiv.style.left=l+'px';
+					//滚动条拖拽的比例
+					var scale=l/(oParent.offsetWidth-oDiv.offsetWidth); 
+					oDiv3.style.top=-(oDiv3.offsetHeight-oDiv2.offsetHeight)*scale+'px';
+					document.title=scale;  
+				};
+				document.onmouseup=function(){
+					document.onmousemove=null;
+					document.onmouseup=null;
+				};
+			};
+		};
+		</script>
+</head>
+<body>
+	<div id="parent">
+		<div id="div1"></div>
+	</div>
+	<div id="div2">
+		<div id="div3">简介: 五代十国后期，赵匡胤还只是中级校尉，这时一名禁军小队长就已经知道他陈桥兵变、杯酒释兵权的故事了。大家都还有机会，况且小队长对赵家将来的干法也不是很赞...简介: 五代十国后期，赵匡胤还只是中级校尉，这时一名禁军小队长就已经知道他陈桥兵变、杯酒释兵权的故事了。大家都还有机会，况且小队长对赵家将来的干法也不是很赞...简介: 五代十国后期，赵匡胤还只是中级校尉，这时一名禁军小队长就已经知道他陈桥兵变、杯酒释兵权的故事了。大家都还有机会，况且小队长对赵家将来的干法也不是很赞...简介: 五代十国后期，赵匡胤还只是中级校尉，这时一名禁军小队长就已经知道他陈桥兵变、杯酒释兵权的故事了。大家都还有机会，况且小队长对赵家将来的干法也不是很赞...简介: 五代十国后期，赵匡胤还只是中级校尉，这时一名禁军小队长就已经知道他陈桥兵变、杯酒释兵权的故事了。大家都还有机会，况且小队长对赵家将来的干法也不是很赞...简介: 五代十国后期，赵匡胤还只是中级校尉，这时一名禁军小队长就已经知道他陈桥兵变、杯酒释兵权的故事了。大家都还有机会，况且小队长对赵家将来的干法也不是很赞...简介: 五代十国后期，赵匡胤还只是中级校尉，这时一名禁军小队长就已经知道他陈桥兵变、杯酒释兵权的故事了。大家都还有机会，况且小队长对赵家将来的干法也不是很赞...简介: 五代十国后期，赵匡胤还只是中级校尉，这时一名禁军小队长就已经知道他陈桥兵变、杯酒释兵权的故事了。大家都还有机会，况且小队长对赵家将来的干法也不是很赞...简介: 五代十国后期，赵匡胤还只是中级校尉，这时一名禁军小队长就已经知道他陈桥兵变、杯酒释兵权的故事了。大家都还有机会，况且小队长对赵家将来的干法也不是很赞...简介: 五代十国后期，赵匡胤还只是中级校尉，这时一名禁军小队长就已经知道他陈桥兵变、杯酒释兵权的故事了。大家都还有机会，况且小队长对赵家将来的干法也不是很赞...简介: 五代十国后期，赵匡胤还只是中级校尉，这时一名禁军小队长就已经知道他陈桥兵变、杯酒释兵权的故事了。大家都还有机会，况且小队长对赵家将来的干法也不是很赞...简介: 五代十国后期，赵匡胤还只是中级校尉，这时一名禁军小队长就已经知道他陈桥兵变、杯酒释兵权的故事了。大家都还有机会，况且小队长对赵家将来的干法也不是很赞...</div>
+		
+	</div>
+</body>
+</html>

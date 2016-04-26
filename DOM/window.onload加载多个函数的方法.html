@@ -1,0 +1,20 @@
+//在window.onload里加载多个函数的方法
+			//方法1
+			window.onload=function() {
+				firstFunction();
+				secondFunction();
+			};
+			//方法2:使用函数addLoadEvent
+			function addLoadEvent(func){  //func：页面加载完毕后执行的函数
+				var oldonload=window.onload; //把现有window.onload存入变量
+				if(typeof window.onload !='function'){
+					window.onload=func; //如果还没有绑定函数则照常添加函数
+				}else{
+					window.onload=function(){
+						oldonload(): //如果已绑定函数则把新函数追加到末尾
+						func();
+					}；
+				}；
+			}；
+			addLoadEvent(firstFunction);
+			addLoadEvent(secondFunction);

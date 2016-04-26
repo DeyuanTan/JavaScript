@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<style type="text/css">
+	#div1{width: 100px;height: 100px;background:red;position: absolute;}
+	#div2{width: 100px;height: 100px;background:black;position: absolute;}
+	#div3{width: 100px;height: 100px;background:yellow;position: absolute;}
+	</style>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		window.onload=function(){
+			drag('div1');
+			drag('div2');
+			drag('div3');
+		};
+		function drag(id){
+			var oDiv=document.getElementById(id);
+			
+			oDiv.onmousedown=function(ev){
+				var oEvent=ev||event;
+				var disX=oEvent.clientX-oDiv.offsetLeft;
+				var disY=oEvent.clientY-oDiv.offsetTop;
+
+				if(oDiv.setCapture){
+					oDiv.onmousemove=fnMove;
+				    oDiv.onmouseup=fnUp;
+					oDiv.setCapture(); //事件捕获,阻止默认,全部导入oDiv,仅限IE
+				}else{
+					document.onmousemove=fnMove;
+				    document.onmouseup=fnUp;
+				};
+
+
+			function fnMove(ev){
+					var oEvent=ev||event;
+					var l=oEvent.clientX-disX;
+					var t=oEvent.clientY-disY;
+					if(l<0){   
+						l=0;
+					}else if(l>document.documentElement.clientWidth-oDiv.offsetWidth){
+						l=document.documentElement.clientWidth-oDiv.offsetWidth;
+					};
+					if(t<0){
+						t=0;
+					}else if(t>document.documentElement.clientHeight-oDiv.offsetHeight){
+						t=document.documentElement.clientHeight-oDiv.offsetHeight;
+					};
+					oDiv.style.left=l+'px';
+					oDiv.style.top=t+'px';
+			};
+			function fnUp(){
+				this.onmousemove=null;
+				this.onmouseup=null;
+				if(this.releaseCapture){
+					this.releaseCapture(); //释放捕获
+				};
+			};
+			return false;
+		}
+			
+		};
+
+	</script>
+</head>
+<body>
+     ewqrihiwegrt
+	<div id="div1">dsgvd</div>
+	<div id="div2">gdfg</div>
+	<div id="div3">jtyt</div>
+	符文efeg
+</body>
+</html>

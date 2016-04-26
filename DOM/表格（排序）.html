@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		window.onload=function(){
+			var oBtn=document.getElementById('btn1');
+			var oTab=document.getElementById('tab1');
+			var bAsc=true;
+			oBtn.onclick=function(){
+				var arr=[];
+				var i = 0;
+				//转成数组
+				for(i = 0;i<oTab.tBodies[0].rows.length;i++){
+					arr[i]=oTab.tBodies[0].rows[i];
+				};
+				//数组排序
+				arr.sort(function(tr1,tr2){
+					if(bAsc){
+						return parseInt(tr1.cells[0].innerHTML)-parseInt(tr2.cells[0].innerHTML);
+					}else{
+						return parseInt(tr2.cells[0].innerHTML)-parseInt(tr1.cells[0].innerHTML);
+					}
+				});
+				//重新插入
+				for(i=0;i<arr.length;i++){
+					oTab.tBodies[0].appendChild(arr[i]);
+				};
+				bAsc=!bAsc;
+			};
+			
+		};
+	</script>
+</head>
+<body>
+	<input id="btn1" type="button" value="排序" />
+	<table id="tab1" border="1" width="400">
+		<thead>
+			<td>ID</td>
+			<td>姓名</td>
+			<td>操作</td>
+		</thead>
+		<tbody>
+			<tr>
+				<td>2</td>
+				<td>blue</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>5</td>
+				<td>yellow</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>black</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>4</td>
+				<td>daye</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td>shabi</td>
+				<td></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

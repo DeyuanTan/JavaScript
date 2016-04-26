@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<style type="text/css">
+		#div1{width:200px;height: 200px;background-color: red;}
+	</style>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		function myAddEvent(obj,sEvent,fn){
+			if(obj.attachEvent){
+				obj.attachEvent('on'+sEvent,fn);
+			}else{
+				obj.addEventListener(sEvent,fn,false);
+			};
+		};
+
+		window.onload=function(){
+			var oDiv=document.getElementById('div1');
+			function onMouseWheel(ev){
+				var oEvent=ev||event;
+				//IE
+				//wheelDelta:下滚是负数上滚是正数
+				//FF
+				//detail:下滚时正数上滚时负数
+				var bDown=true; //确定滚轮方向
+				bDown=oEvent.wheelDelta?oEvent.wheelDelta<0:oEvent.detail>0;
+				/*if(oEvent.wheelDelta){
+					if(oEvent.wheelDelta<0){
+						bDown=true;
+					}else{
+						bDown=false;
+					};
+				}else{
+					if(oEvent.detail>0){
+						bDown=true;
+					}else{
+						bDown=false;
+					};
+				};*/
+				alert(bDown);
+			};
+			myAddEvent(oDiv,'mousewheel',onMouseWheel);
+			myAddEvent(oDiv,'DOMMouseScroll',onMouseWheel);
+		}
+			//IE chrome
+			/*oDiv.onmousewheel=function(){
+				alert('a');
+			};*/
+			//FF
+			/*oDiv.addEventListener('DOMMouseScroll',function(){
+				alert('a');
+			},false);*/
+			
+	</script>
+</head>
+<body>
+	<div id="div1"></div>
+</body>
+</html>
