@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<style type="text/css">
+		#div1{width: 100px;height: 100px;background-color: #ccc;position: absolute;}
+	</style>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+	/*	window.onload=function(){
+			var oDiv=document.getElementById('div1');
+			oDiv.onmousedown=function(ev){
+				var oEvent=ev||event;
+				var disX=oEvent.clientX-oDiv.offsetLeft;
+				var disY=oEvent.clientY-oDiv.offsetTop;
+				document.onmousemove=function(ev){
+					var oEvent=ev||event;
+					oDiv.style.left=oEvent.clientX-disX+'px';
+					oDiv.style.top=oEvent.clientY-disY+'px';
+				};
+				document.onmouseup=function(){
+					document.onmousemove=null;
+					document.onmouseup=null;
+				};
+			};
+		};  */
+	/*	var oDiv=null;
+		var disX=0;
+		var disY=0;
+		window.onload=function(){
+			oDiv=document.getElementById('div1');
+			oDiv.onmousedown=fnDown;
+		};
+
+		function fnDown(ev){
+				var oEvent=ev||event;
+				disX=oEvent.clientX-oDiv.offsetLeft;
+				disY=oEvent.clientY-oDiv.offsetTop;
+				document.onmousemove=fnMove;
+				document.onmouseup=fnUp;
+			};
+
+		function fnMove(ev){
+			var oEvent=ev||event;
+			oDiv.style.left=oEvent.clientX-disX+'px';
+			oDiv.style.top=oEvent.clientY-disY+'px';
+		};
+		function fnUp(){
+			document.onmousemove=null;
+			document.onmouseup=null;
+		};  */
+
+		window.onload=function(){
+			new Drag('div1');
+		}
+		
+		function Drag(id){
+			var _this=this;
+			this.disX=0;
+		    this.disY=0;
+			this.oDiv=document.getElementById(id);
+			this.oDiv.onmousedown=function(){
+				_this.fnDown();
+			}
+		};
+
+		Drag.prototype.fnDown=function (ev){
+			var _this=this;
+			var oEvent=ev||event;
+			this.disX=oEvent.clientX-this.oDiv.offsetLeft;
+			this.disY=oEvent.clientY-this.oDiv.offsetTop;
+			document.onmousemove=function(){
+				_this.fnMove();
+			}
+			document.onmouseup=function(){
+				_this.fnUp();
+			}
+		};
+
+		Drag.prototype.fnMove=function (ev){
+			var oEvent=ev||event;
+			this.oDiv.style.left=oEvent.clientX-this.disX+'px';
+			this.oDiv.style.top=oEvent.clientY-this.disY+'px';
+		};
+		Drag.prototype.fnUp=function (){
+			document.onmousemove=null;
+			document.onmouseup=null;
+		};
+	</script>
+</head>
+<body>
+	<div id="div1"></div>
+</body>
+</html>

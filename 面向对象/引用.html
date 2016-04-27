@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+	/*     //引用
+		var arr1=[1,2,3];
+		var arr2=arr1;
+		arr2.push(4);
+		alert(arr1);  //等于[1,2,3,4]
+		alert(arr2);  //等于[1,2,3,4]  */
+
+
+		var arr1=[1,2,3];
+		var arr2=[];
+		for(var i in arr1){
+			arr2[i]=arr1[i];
+		}
+		arr2.push(4);
+		alert(arr1);   //等于[1,2,3]
+		alert(arr2);   //等于[1,2,3,4]
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

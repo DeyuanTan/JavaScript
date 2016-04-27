@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<style type="text/css">
+		#div1{width: 100px;height: 100px;background-color: #ccc;position: absolute;}
+		#div2{width: 100px;height: 100px;background-color: red;position: absolute;}
+	</style>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="Drag.js"></script>
+	<script type="text/javascript" src="LimitDrag.js"></script>
+	<script type="text/javascript">
+		//instanceof 判断某个对象是不是某个类的实例
+	/*	var arr1=[1,2,3];
+		alert(arr1 instanceof Array); */ //true
+
+		window.onload=function(){
+			new Drag('div1');
+			new LimitDrag('div2');
+		};
+		
+		
+	</script>
+</head>
+<body>
+	<div id="div1"></div>
+	<div id="div2"></div>
+</body>
+</html>
