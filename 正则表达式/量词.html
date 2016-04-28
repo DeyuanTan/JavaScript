@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+	/*	{n,m}最少n次最多m次；
+		{n,}最少n次，最多不限；
+		{,m}最少不限，最多m次；
+		{n}正好n次；
+		+  表示[1,]最少出现一次  
+		?  表示[0,1]出现0次或1次*/
+		var str='你的Q号时2830627383，他的是384203845';
+		var re=/[1-9]\d{4,10}/g;
+		alert(str.match(re));
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
