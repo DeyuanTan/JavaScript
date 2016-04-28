@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+	/*	邮箱：一串字母数字下划线 \w+；一串英文数字[a-z0-9];一串英文（长度是2-4）[a-z]{2,4}
+		^\w+@[a-z0-9]+\.[a-z]{2,4}$  
+		^表示行首呀，$表示行尾  
+		var str='  ffe  ege  g44g   ';
+		var re=/^\s+|\s+$/g;
+		alert(str.replace(re,''))去掉行首行尾空格  
+		检测中文
+		var str='adfg ge dg个 geg ge ';
+		var re=/[\u4e00-\u9fa5]/;
+		alert(re.test(str));  */
+
+
+		window.onload=function(){
+			var oTxt=document.getElementById('txt1');
+			var oBtn=document.getElementById('btn1');
+			oBtn.onclick=function(){
+				var re=/^\w+@[a-z0-9]+\.[a-z]{2,4}$/;
+				if(re.test(oTxt.value)){
+					alert('true');
+				}else{
+					alert('false');
+				}；
+			}；
+		}；
+	</script>
+</head>
+<body>
+	<input id="txt1" type="text" />
+	<input id="btn1" type="button" value="校验">
+</body>
+</html>
